@@ -39,7 +39,7 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ onLoginSuccess }) => {
     } else {
       // Default initial list containing the workspace owner/developer account
       const defaultAccounts = [
-        { name: 'Rakshith', email: 'grkshth@gmail.com', avatar: 'R' }
+        { name: 'Developer', email: 'developer@hearth.space', avatar: 'D' }
       ];
       setGoogleAccounts(defaultAccounts);
       localStorage.setItem('hearth_google_accounts', JSON.stringify(defaultAccounts));

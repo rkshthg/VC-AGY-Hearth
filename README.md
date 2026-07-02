@@ -37,7 +37,7 @@ Before starting, ensure you have the following installed on your machine:
         ```
     *   Set your active project:
         ```bash
-        gcloud config set project gen-lang-client-0746929700
+        gcloud config set project <YOUR_GCP_PROJECT_ID>
         ```
 
 ---
