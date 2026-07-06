@@ -19,7 +19,8 @@ RUN pip install --no-cache-dir \
     "mcp>=1.0.0" \
     "opentelemetry-instrumentation-google-genai>=0.1b0,<1.0.0" \
     "gcsfs>=2024.11.0" \
-    "google-cloud-logging>=3.12.0,<4.0.0"
+    "google-cloud-logging>=3.12.0,<4.0.0" \
+    "cryptography>=41.0.0"
 
 # Copy consolidated application packages and frontend build
 COPY src ./src

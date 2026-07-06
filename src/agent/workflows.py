@@ -7,6 +7,7 @@ from google.adk.agents import Agent
 from google.adk.models import Gemini
 
 from src.database.db import get_db_connection
+from src.utils.encryption import encrypt_text
 
 # Setup GCP configuration dynamically using active default credentials.
 # This prevents hardcoding project IDs or sensitive API keys.
@@ -37,9 +38,12 @@ def save_to_database(summary: str, emotion_path: str, user_id: str = "guest") ->
     """
     conn = get_db_connection()
     cursor = conn.cursor()
+    
+    encrypted_summary = encrypt_text(summary)
+    
     cursor.execute(
         "INSERT INTO journal_entries (emotion_path, summary, user_id) VALUES (?, ?, ?)",
-        (emotion_path, summary, user_id)
+        (emotion_path, encrypted_summary, user_id)
     )
     conn.commit()
     conn.close()

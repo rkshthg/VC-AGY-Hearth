@@ -176,11 +176,12 @@ export const CalendarTracker: React.FC = () => {
               const hasLogs = dayLogs.length > 0;
               const isSelected = selectedDateStr === cellDateStr;
               
-              // Highlight color (use colorMap of primary emotion of the first log)
               const highlightColor = hasLogs ? (colorMap[dayLogs[0].primaryEmotion] || colorMap.Unknown) : 'transparent';
               
               // Check if it is today (for styling today's cell)
-              const isToday = cellDateStr === '2026-07-01';
+              const today = new Date();
+              const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+              const isToday = cellDateStr === todayStr;
 
               return (
                 <div 

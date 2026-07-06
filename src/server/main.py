@@ -11,6 +11,7 @@ import uvicorn
 # Clean absolute package imports – no sys.path hacks
 from src.agent.workflows import root_agent
 from src.database.db import get_db_connection, init_db
+from src.utils.encryption import decrypt_text
 
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
@@ -70,7 +71,7 @@ async def get_entries(user_id: str = "guest"):
                 "date": date_only,
                 "emotion_path": path,
                 "primaryEmotion": primary,
-                "summary": r['summary']
+                "summary": decrypt_text(r['summary'])
             })
         return entries
     except Exception as e:

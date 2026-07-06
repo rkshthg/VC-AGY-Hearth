@@ -1,10 +1,20 @@
 # Hearth - Emotional Wellness Sanctuary
 
-Hearth is a safe, premium, glassmorphic journal and emotional tracking application powered by a multi-agent workflow. It guides users through mindful reflection, processes emotions, and stores a private, structured journal archive.
+![Hearth App Demo](docs/gallery/hearth_full_demo_v2.webp)
+
+## 😟 The Problem
+
+In today's fast-paced digital world, people often struggle to find a private, secure, and guided space to process their emotions. Traditional journaling can feel overwhelming, unstructured, or time-consuming, making it difficult to maintain a consistent habit of emotional reflection and identify long-term emotional patterns.
+
+## 💡 The Solution
+
+Hearth is a safe, premium, glassmorphic journal and emotional tracking application powered by a multi-agent workflow. It acts as an intelligent companion that guides users through mindful reflection, starting with a structured emotion drill-down. It processes your feelings, helps you draft thoughtful summaries of your day, and stores a private, structured journal archive. Finally, it visualizes your emotional journey over time through an interactive calendar.
 
 ---
 
-## 🛠️ Technologies Used
+## 🏗️ Architecture
+
+Hearth is built using a modern, decoupled architecture leveraging AI orchestration:
 
 ### Frontend (User Interface)
 *   **React 18** (TypeScript, Vite build toolchain)
@@ -106,4 +116,3 @@ Hearth has a built-in Model Context Protocol server that external LLM interfaces
     ```bash
     npx @modelcontextprotocol/inspector python -m src.server.mcp_server
     ```
-

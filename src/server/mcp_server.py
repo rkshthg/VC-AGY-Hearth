@@ -3,6 +3,7 @@ import sqlite3
 import os
 
 from src.database.db import get_db_connection
+from src.utils.encryption import decrypt_text
 
 # Create a FastMCP server named "Hearth Journal" for external agent integration
 mcp = FastMCP("Hearth Journal")
@@ -32,7 +33,7 @@ def get_latest_journal_entries(user_id: str = "guest", limit: int = 5) -> str:
             
         result = []
         for i, row in enumerate(rows, 1):
-            date, path, summary = row['date'], row['emotion_path'], row['summary']
+            date, path, summary = row['date'], row['emotion_path'], decrypt_text(row['summary'])
             # Dynamically compute primary emotion from path
             primary = path.split('->')[0].strip() if '->' in path else path.strip()
             result.append(
@@ -71,7 +72,7 @@ def search_entries_by_emotion(emotion: str, user_id: str = "guest") -> str:
         result = []
         match_idx = 1
         for row in rows:
-            date, path, summary = row['date'], row['emotion_path'], row['summary']
+            date, path, summary = row['date'], row['emotion_path'], decrypt_text(row['summary'])
             primary = path.split('->')[0].strip() if '->' in path else path.strip()
             
             # Perform case-insensitive matching against primary emotion or path
